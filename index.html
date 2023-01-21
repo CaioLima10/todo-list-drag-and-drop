@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link de icons  -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
+    <script src="script.js" defer></script>
+    <title>Desafio</title>
+</head>
+<body>
+    <div id="transparent-color"></div>
+    <div id="form-container">
+        <form class="form" >
+            <div onclick="closeForm()" id="close-form" class="close-form-container">
+                <svg class="close-form" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15.981" y="5.56293" width="1.73333" height="14.7333" rx="0.866667" transform="rotate(45 15.981 5.56293)" fill="white"/>
+                    <rect x="17.2068" y="15.981" width="1.73333" height="14.7333" rx="0.866667" transform="rotate(135 17.2068 15.981)" fill="white"/>
+                </svg>
+            </div>
+            <h1>Criar Novo Card</h1>
+            <header>
+                <div>
+                    <input id="inputTitle" class="closeBtn" type="text"  placeholder="Tema" maxlength="12"><br>
+                    <label for="text">Tipo da tarefa:</label>
+                </div>
+                        <select id="typeInformation" class="cor">
+                            <option  value="saude , #88f9d4" >Saúde</option>
+                            <option   value="carreira , #f3f653" >Carreira</option>
+                            <option  value ="domestica , #9d88f0">Domestica</option>
+                            <option   value="entreterimento , #ff5f23">entreterimento</option>
+                        </select>
+                 <div>
+                    <input id="inputDescription" class="closeBtn" type="text" name="text" placeholder="Descrição" maxlength="50" >
+                </div>
+                
+                <button id="btnContainer" class="btn-confirm-form" onclick="createCard()"  disabled>confirmar</button>
+            </header>   
+        </form> 
+        </div>
+    </div>        
+             <div class="boards-container" >
+                <div class="container"> 
+                   <div class="top">
+                    <main id="areaToDo">
+                    <h3>to do<p id="one"></p><span >/5</span></h3>
+                    </main>
+                        <div class="dropzone"> 
+                            <span id="NewItem">New Item</span>
+                            <button class="btn-sum" onclick="openForm()">
+                                <svg id="Mais" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="4" width="2" height="10" fill="white"/>
+                                    <rect x="10" y="4" width="2" height="10" transform="rotate(90 10 4)" fill="white"/>
+                                </svg>                    
+                            </button>
+                            <div class="arealist">
+                                <!-- <div class="card" draggable="true">
+                                    <div id="BorderCorOption"> 
+                                              <div id="containerEdit">
+                                                    <svg  id="editCard" width="3" height="10" viewBox="0 0 2 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle cx="1" cy="1" r="1" fill="#D9D9D9"/>
+                                                        <circle cx="1" cy="4" r="1" fill="#D9D9D9"/>
+                                                        <circle cx="1" cy="7" r="1" fill="#D9D9D9"/>
+                                                    </svg>
+                                              </div> 
+                                            <div id="treinarText">Treinar</div> 
+                                            <p>type:</p>
+                                            <div id="tarefas">saude</div>
+                                        <div id="informationText">Treino insano de peito,porque sentimentos, ninguém vê mas um peitoral gigante sim!</div>
+                                        <div id="numberCard">01</div>
+                                   </div>
+                                </div>     -->
+                            </div> 
+                                <!-- div para criar Card -->
+                                <div class="areaCard"></div>
+                                <main id="areaCard"> </main>                
+                    </div>    
+               </div>
+            </div>
+                <div class="containerDoing">
+                    <div class="top">
+                        <h3>Doing<p id="zero">0</p><span>/5</span></h3>
+                        <div class="dropzone">
+                            </div>
+                        </div>
+                 </div>  
+                 <div class="containerDone" >       
+                        <div class="top">    
+                           <h3>Done</h3>
+                            <div class="dropzone">
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+</body>
+</html>
