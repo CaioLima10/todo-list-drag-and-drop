@@ -1,7 +1,7 @@
 ## 💻 projeto em Andamento⏳
 
-Nesse projeto é um App, de vc criar uma tarefa dentro do seu "Card", colocando oque vc que fazer no seu dia.
-podendo arrantar para opção "doing" e "done" e ate mesmo retornar para o "to do".
+Nesse projeto é um App de tarefas, que vc cria uma tarefa dentro do seu "Card", colocando oque vc que fazer no seu dia.
+podendo arrantar para opção "doing" e "done" e ate mesmo retornar para o "toDo".
 
 <img alt="Modal" src=".github/card2.PNG"></img>
 <img alt="Card" src=".github/card.PNG"></img>
