@@ -128,7 +128,16 @@ function createCard(){
       
 
 
-      closeForm()  
+      closeForm() 
+
+         // localStorage basico para ler informacôes dos cards
+              cards = localStorage.setItem
+            ("cards", JSON.stringify([...JSON.parse(localStorage.getItem("cards") || "[]"),
+
+            { Title: inputTitle.value, 
+              Type: typeInformation.value, 
+              Description: inputDescription.value}]));
+               
       // drop Card : arrastar os cards para o doing e done
    dragCard = newCard
 
@@ -160,9 +169,6 @@ function createCard(){
   function dragEnter(e){e.preventDefault()  }
   
   function dragLeave(){  
-    const doingAccount = document.querySelector("#zero")
-    doingAccount.innerHTML = main.childElementCount
-
 
  } };
 
