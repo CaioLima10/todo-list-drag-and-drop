@@ -30,6 +30,7 @@ toDoAccount.innerHTML = '0'
 
 // Mudar Number Doing
 
+// Pegar os cards do localstorage
 
 
 
@@ -93,22 +94,14 @@ function createCard(){
      <div class="arealist">
      <div  id="${contador}"class="card" draggable="true">
      <div id="BorderCorOption" style="background:${valorInputSelect[1]}"> 
-                <div onclick="marcarTarefa(${contador})">
-                      <i id="icone_${contador}" class="mdi mdi-circle-outline"></i>
-                <div/>
                  <div>
-                 <svg class ="editCard" onclick="editCard()" width="7" height="12" viewBox="0 0 2 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <svg class ="editCard" onclick="editCard()" width="9" height="16" viewBox="0 0 2 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="1" cy="1" r="1" fill="#D9D9D9"/>
                             <circle cx="1" cy="4" r="1" fill="#D9D9D9"/>
                             <circle cx="1" cy="7" r="1" fill="#D9D9D9"/>
                       </svg>
                 </div>
-                 <div>
-                      <svg  class="removeCard" onclick ="deleteCard(${contador})" width="17" height="17" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="15.981" y="5.56293" width="1.73333" height="14.7333" rx="0.866667" transform="rotate(45 15.981 5.56293)" fill="white"/>
-                      <rect x="17.2068" y="15.981" width="1.43333" height="14.7333" rx="0.866667" transform="rotate(135 17.2068 15.981)" fill="white"/>
-                      </svg> 
-                 </div>
+              
 
                  <div id="treinarText">${valorInput}</div> 
                  <p>type:</p>
@@ -130,16 +123,21 @@ function createCard(){
 
       closeForm() 
 
-         // localStorage basico para ler informacôes dos cards
-              cards = localStorage.setItem
+         // localStorage basico para ler informacôes dos 
+     
+          cards = localStorage.setItem
             ("cards", JSON.stringify([...JSON.parse(localStorage.getItem("cards") || "[]"),
 
             { Title: inputTitle.value, 
               Type: typeInformation.value, 
-              Description: inputDescription.value}]));
+              Description: inputDescription.value,
+              id: contador,
+              colum: card 
+            }]));
+
+          
                
       // drop Card : arrastar os cards para o doing e done
-   dragCard = newCard
 
   for(var index of card){
       index.addEventListener('dragstart', dragStart)
@@ -174,31 +172,7 @@ function createCard(){
 
   // função deletar os cards
 
-  function deleteCard(id){
-      var cards = document.getElementById(id)
-      cards.remove()
-  }
-
-  function marcarTarefa(id){
-  var card = document.getElementById(id)
-  var classe = card.getAttribute('class')
-
-  console.log(classe)
-
-  if(classe == 'card'){
-    card.classList.add('clicado')
-    var icone = document.getElementById('icone_'+ id)
-    icone.classList.remove('mdi-circle-outline')
-    icone.classList.add('mdi-check-circle')
-  }
-  else{
-    card.classList.remove('clicado')
-    var icone = document.getElementById('icone_'+ id)
-    icone.classList.remove('mdi-check-circle')
-    icone.classList.add('mdi-circle-outline')
-  }
- }  
-
+  
 
 
  

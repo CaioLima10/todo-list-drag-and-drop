@@ -5,12 +5,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
+
 } 
 body{
   background-color: #FFFFFF;
   display: grid;
   place-items: center;
-  height: 100vh;
 }
 
 h1{
@@ -19,39 +19,24 @@ h1{
     margin-bottom: 20px;
     margin-right: 180px;
 }
-input{
-    height: 40px;
-    width: 220px;
-    margin: 10px;
-}
 
 .boards-container{
-    display: flex;  
-    width: 608px;
-    height: 500px;
+    display:flex;  
+    width: 100%;
+    min-height: 700px;
     background-color: #2B2B2B;
+
+ 
+}
+.container ,
+ .containerDoing ,
+ .containerDone {
+    width: 33.3%;
+    border-right: 2px solid #414141; 
 }
 
-.container , .containerDoing {
-   border-right: 2px solid #414141; 
-}
-.container , .containerDoing , .containerDone{
-   overflow-x:hidden;
-   margin-bottom: 10px;
-}
-::-webkit-scrollbar{
-   background-color: #1d1d1d;
-   width: 2px;
-   border-top-right-radius: 2px;
-   border-bottom-right-radius: 2px;
-}
-::-webkit-scrollbar-thumb{
-   background-color: #9AE162;
-   border-radius: 2px;
-
-}
 .top {
-   width: 200px;
+   width: 100%;
    height: 40px;
    background: #141316;
    text-align: center;
@@ -60,124 +45,421 @@ input{
 h3{
    display: flex;
    color: #FFFFFF;
-   margin-left: 50px;
+   margin-left: 135px;
    margin-top: 2px;   
 }
-#one, #zero{
-   font-size: 22px;
+#one{
+   font-size: 28px;
    font-weight: 100;
    margin: -4px;
-   margin-left: 25px;
-   margin-top: 1px;
+   margin-left: 85px;
    color: white;
 }
-
+#zero{
+   font-size: 28px;
+   font-weight: 100;
+   margin: -4px;
+   margin-left: 90px;
+   color: white;
+}
 span{
-   font-size: 12px;
-   margin-top: 8px;
-   margin-left: 10px;
+   font-size: 16px;
+   margin-top: 4px;
+   margin-left: 60px;
 }  
 #NewItem{
    display: flex;
    align-items: center;
    color: #ffffff;
    position: absolute;
-   margin-left: 60px;
+   font-size: 20px;
+   margin-left: 120px;
 }
 .btn-sum{
-   width: 26px;
-   height: 26px;
+   width: 42px;
+   height: 42px;
    margin-bottom: 18px;
    margin-top: 5px;
-   margin-right: 120px;
+   margin-right: 270px;
    background: #9AE162;
    border: none;
    cursor: pointer;
 }
 
-.card-container{
-   display: flex;
-   justify-content: center;
-   flex-wrap: wrap;
-   max-width: 800px;
-   margin: auto;
-   }
-
 .card{
    background-color:rgba(255,255,255, 0.1);
-   width: 140px;
-   height: 200px;
+   width: 220px;
+   height: 280px;
    border-radius: 4px;
    font-weight: 600;
    font-size: 18px;
    margin-left: 20px;
-   margin-bottom: 15px;
+   margin-bottom: 30px;
 }
+
 .card.clicado{
    opacity:0.8;
    background-color:#99e1621c;
 }
 
-
 #BorderCorOption{
    display: block;
-   height: 200px;
-   width: 3px;
+   height: 280px;
+   width: 4px;
    margin-right:8px;
 }
 
 .editCard{
-   cursor: pointer; 
-   margin-left: 122px;
    display: flex;
-   margin-top: 5px;
+   position: absolute;
+   cursor: pointer; 
+   margin-left: 200px;
+   margin-top: 15px;
 }
 
 #treinarText{
-   font-size: 14px;
-   margin-left: 10px; 
-   color: #ffffff;
-   margin-bottom:5px;
-}
-
-.removeCard{
-   cursor: pointer;
-   border-radius: 50%;
    display: flex;
-   width: 22px;
-   height:20px;
-   float: left;
-   margin: -40px;
-   margin-left: 115px;
-   background-color: #2b2b2b3b;
+   position: absolute;
+   margin-top: 35px;
+   margin-bottom: 20px;
+   font-size: 24px;
+   margin-left: 10px; 
+   color: #ffffff; 
 }
 
-.removeCard:hover{
-   transition: 0.5s ease-in-out;
-   background: #d04a4ade;
-}
 p{
-   font-size: 12px;
+   display: flex;
+   position: absolute;
+   margin-top: 70px;
+   font-size: 18px;
    margin-left: 10px;
    margin-bottom: 5px;
    color: #ffffff;  
 }
 
 #tarefas{
-   font-size: 11px;
+   display: flex;
+   position: absolute;
+   margin-top: 105px;
    background-color: #ffffff;
+   font-size: 16px;
    color: #141316;
-   width: 110px;
-   margin-left: 14px;
+   width: 200px;
+   margin-left: 10px;
+   padding-left: 70px;
 
 }
 #informationText{
    display:grid;
+   position: absolute;
    flex-wrap: wrap;
+   overflow: hidden;
+   width: 200px;
+   margin-left: 10px;
+   margin-top: 145px;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   color: #FFFFFF;  
+}
+
+#numberCard{   
+   display: flex;
+   position: absolute;
+   margin-left: 190px;
+   font-size: 14px;
+   color: #ffffff;
+   margin-top: 240px;
+}
+/* parte do drop arrastar Card */
+.dropzone {
+   margin-top: 35px;
+   min-height: 100vh;
+}
+
+@media screen and (max-width: 880px) and ( min-width: 781px)  {
+   h3{
+      display: flex;
+      color: #FFFFFF;
+      margin-left: 100px;
+      margin-top: 2px;   
+   }
+   #one{
+      font-size: 28px;
+      font-weight: 100;
+      margin: -4px;
+      margin-left: 90px;
+      color: white;
+   }
+   #zero{
+      font-size: 28px;
+      font-weight: 100;
+      margin: -4px;
+      margin-left: 95px;
+      color: white;
+   }
+  
+   .btn-sum{
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      margin-top: 5px;
+      margin-right: 140px;
+      background: #9AE162;
+      border: none;
+      cursor: pointer;
+   }
+}
+
+
+@media screen and (max-width: 780px) and (min-width: 620px) {
+
+   h3{
+      display: flex;
+      color: #FFFFFF;
+      margin-left: 70px;
+      margin-top: 2px;   
+   }
+   #one{
+      font-size: 28px;
+      font-weight: 100;
+      margin: -4px;
+      margin-left: 85px;
+      color: white;
+   }
+   #zero{
+      font-size: 28px;
+      font-weight: 100;
+      margin: -4px;
+      margin-left: 90px;
+      color: white;
+   }
+  
+   #NewItem{
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      position: absolute;
+      font-size: 16px;
+      margin-left: 70px;
+   }
+   .btn-sum{
+      width: 38px;
+      height: 38px;
+      margin-bottom: 18px;
+      margin-top: 5px;
+      margin-right: 150px;
+      background: #9AE162;
+      border: none;
+      cursor: pointer;
+   }
+   .card{
+      background-color:rgba(255,255,255, 0.1);
+      width: 180px;
+      height: 240px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 18px;
+      margin-left: 20px;
+      margin-bottom: 30px;
+   }
+   
+   .card.clicado{
+      opacity:0.8;
+      background-color:#99e1621c;
+   }
+   
+#BorderCorOption{
+   display: block;
+   height: 240px;
+   width: 3px;
+   margin-right:8px;
+}
+
+.editCard{
+   display: flex;
+   position: absolute;
+   cursor: pointer; 
+   margin-left: 160px;
+   margin-top: 15px;
+}
+
+#treinarText{
+   display: flex;
+   position: absolute;
+   margin-top: 35px;
+   margin-bottom: 20px;
+   font-size: 22px;
+   margin-left: 10px; 
+   color: #ffffff; 
+}
+
+p{
+   display: flex;
+   position: absolute;
+   margin-top: 70px;
+   font-size: 16px;
+   margin-left: 10px;
+   margin-bottom: 5px;
+   color: #ffffff;  
+}
+
+#tarefas{
+   display: flex;
+   position: absolute;
+   margin-top: 105px;
+   background-color: #ffffff;
+   font-size: 12px;
+   color: #141316;
+   width: 160px;
+   margin-left: 10px;
+   padding-left: 60px;
+
+}
+#informationText{
+   display:grid;
+   position: absolute;
+   flex-wrap: wrap;
+   overflow: hidden;
+   width: 160px;
+   margin-left: 10px;
+   margin-top: 145px;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 12px;
+   color: #FFFFFF;  
+}
+
+#numberCard{   
+   display: flex;
+   position: absolute;
+   margin-left: 160px;
+   font-size: 10px;
+   color: #ffffff;
+   margin-top: 210px;
+}
+}
+
+
+
+@media screen and (max-width: 619px) and (min-width: 520px) {
+
+   h3{
+      display: flex;
+      color: #FFFFFF;
+      margin-left: 50px;
+      margin-top: 2px;   
+   }
+   #one{
+      font-size: 24px;
+      font-weight: 100;
+      margin: -2px;
+      margin-left: 65px;
+      color: white;
+   }
+   #zero{
+      font-size: 24px;
+      font-weight: 100;
+      margin: -2px;
+      margin-left: 70px;
+      color: white;
+   }
+   span{
+      font-size: 14px;
+      margin-top: 4px;
+      margin-left: 35px;
+   }
+  
+   #NewItem{
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      position: absolute;
+      font-size: 13px;
+      margin-left: 60px;
+   }
+   .btn-sum{
+      width: 34px;
+      height: 34px;
+      margin-bottom: 18px;
+      margin-top: 5px;
+      margin-right: 110px;
+      background: #9AE162;
+      border: none;
+      cursor: pointer;
+   }
+   .card{
+      background-color:rgba(255,255,255, 0.1);
+      width: 140px;
+      height: 190px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 18px;
+      margin-left: 20px;
+      margin-bottom: 30px;
+   }
+   
+   .card.clicado{
+      opacity:0.8;
+      background-color:#99e1621c;
+   }
+   
+#BorderCorOption{
+   display: block;
+   height: 190px;
+   width: 2px;
+   margin-right:8px;
+}
+
+.editCard{
+   display: flex;
+   position: absolute;
+   cursor: pointer; 
+   width: 6px;
+   height: 12px; 
+   margin-left: 120px;
+   margin-top: 15px;
+}
+
+#treinarText{
+   display: flex;
+   position: absolute;
+   margin-top: 30px;
+   font-size: 16px;
+   margin-left: 10px; 
+   color: #ffffff; 
+}
+
+p{
+   display: flex;
+   position: absolute;
+   margin-top: 60px;
+   font-size: 13px;
+   margin-left: 10px;
+   margin-bottom: 5px;
+   color: #ffffff;  
+}
+
+#tarefas{
+   display: flex;
+   position: absolute;
+   margin-top: 90px;
+   background-color: #ffffff;
+   font-size: 10px;
+   color: #141316;
    width: 120px;
    margin-left: 10px;
-   margin-top: 15px;
+   padding-left: 45px;
+
+}
+#informationText{
+   display:grid;
+   position: absolute;
+   flex-wrap: wrap;
    overflow: hidden;
+   width: 120px;
+   margin-left: 10px;
+   margin-top: 115px;
    font-style: normal;
    font-weight: 400;
    font-size: 10px;
@@ -186,31 +468,146 @@ p{
 
 #numberCard{   
    display: flex;
-   margin-left: 65px;
+   position: absolute;
+   margin-left: 120px;
    font-size: 8px;
    color: #ffffff;
+   margin-top: 160px;
+}
+}
+
+
+@media screen and (max-width: 519px) and (min-width: 380px) {
+
+   h3{
+      display: flex;
+      color: #FFFFFF;
+      margin-left: 20px;
+      font-size: 14px;
+  
+   }
+   #one{
+      font-size: 20px;
+      font-weight: 100;
+      margin: -2px;
+      margin-left: 45px;
+      color: white;
+   }
+   #zero{
+      font-size: 20px;
+      font-weight: 100;
+      margin: -2px;
+      margin-left: 50px;
+      color: white;
+   }
+   span{
+      font-size: 12px;
+      margin-top: 4px;
+      margin-left: 25px;
+   }
+  
+   #NewItem{
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      position: absolute;
+      font-size: 11px;
+      margin-left: 40px;
+   }
+   .btn-sum{
+      width: 28px;
+      height: 28px;
+      margin-bottom: 18px;
+      margin-top: 5px;
+      margin-right: 85px;
+      background: #9AE162;
+      border: none;
+      cursor: pointer;
+   }
+   .card{
+      background-color:rgba(255,255,255, 0.1);
+      width: 105px;
+      height: 150px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 18px;
+      margin-left: 5px;
+      margin-bottom: 30px;
+   }
+   
+   .card.clicado{
+      opacity:0.8;
+      background-color:#99e1621c;
+   }
+   
+#BorderCorOption{
+   display: block;
+   height: 150px;
+   width: 2px;
+   margin-right:8px;
+}
+
+.editCard{
+   display: flex;
+   position: absolute;
+   cursor: pointer; 
+   width: 6px;
+   height: 10px; 
+   margin-left: 90px;
    margin-top: 10px;
 }
-/* parte do drop arrastar Card */
-.dropzone {
-   margin-top: 35px;
-   min-height: 300px;
+
+#treinarText{
+   display: flex;
+   position: absolute;
+   margin-top: 20px;
+   font-size: 12px;
+   margin-left: 10px; 
+   color: #ffffff; 
 }
 
-/* estilização icones do Done */
-.mdi-circle-outline, .mdi-check-circle{
-   background-color: #9AE162;
-   border-radius: 0 0 10px 10px;
-   rotate: 20deg 20deg;
-   font-size: 1rem;
-   color: black;
-   cursor: pointer;
-   margin-left: 5px;
+p{
+   display: flex;
+   position: absolute;
+   margin-top: 40px;
+   font-size: 9px;
+   margin-left: 10px;
+   margin-bottom: 5px;
+   color: #ffffff;  
+}
+
+#tarefas{
+   display: flex;
+   position: absolute;
+   margin-top: 60px;
+   background-color: #ffffff;
+   font-size: 9px;
+   color: #141316;
+   width: 90px;
+   margin-left: 10px;
+   padding-left: 30px;
 
 }
-.mdi-check-circle:hover{
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
-  outline-color: rgba(255, 255, 255, 0);
-  outline-offset: 15px;
-  text-shadow: 1px 1px 1px #427388; 
-} 
+#informationText{
+   display:grid;
+   position: absolute;
+   flex-wrap: wrap;
+   overflow: hidden;
+   width: 90px;
+   margin-left: 10px;
+   margin-top: 80px;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 8px;
+   color: #FFFFFF;  
+}
+
+#numberCard{   
+   display: flex;
+   position: absolute;
+   margin-left: 90px;
+   font-size: 8px;
+   color: #ffffff;
+   margin-top: 130px;
+}
+}
