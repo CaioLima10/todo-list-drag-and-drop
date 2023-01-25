@@ -1,5 +1,3 @@
-
-
 // preventDefault
 const body = document.querySelector("body")
 
@@ -28,9 +26,54 @@ const card = document.getElementsByClassName("card")
 const toDoAccount = document.querySelector("#one")
 toDoAccount.innerHTML = '0'
 
-// Mudar Number Doing
+const doing = document.querySelector("#zero")
+toDoAccount.innerHTML = '0'
 
 // Pegar os cards do localstorage
+
+function functionGetItems() {
+  const cardsLocalStorageJson = window.localStorage.getItem('cards');
+  const cardsLocalStorage = JSON.parse(cardsLocalStorageJson)
+  console.log(cardsLocalStorage)
+  
+
+  cardsLocalStorage?.map((card)=> {
+    const typeColor = card.Type.split(' , ')
+    const id = Math.random(); 
+
+    const newCard =`
+     <div class="arealist">
+     <div  id="${id}"class="card" draggable="true">
+     <div id="BorderCorOption" style="background:${typeColor[1]}"> 
+                 <div>
+                 <svg class ="editCard" onclick="editCard()" width="7" height="12" viewBox="0 0 2 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="1" cy="1" r="1" fill="#D9D9D9"/>
+                            <circle cx="1" cy="4" r="1" fill="#D9D9D9"/>
+                            <circle cx="1" cy="7" r="1" fill="#D9D9D9"/>
+                      </svg>
+                </div>
+              
+                 <div id="treinarText">${card.Title}</div> 
+                 <p>type:</p>
+                 <div id="tarefas">${typeColor[0]}</div>
+                 <div id="informationText">${card.Description}</div>
+                 <div id="numberCard">0${card.id}</div>
+                 <div> 
+                 </div>
+              </div>
+          </div>        
+      </div>`
+     
+      
+    main.innerHTML += newCard;
+    closeForm()
+  })
+}
+
+functionGetItems()
+
+// Mudar Number Doing
+
 
 
 
@@ -89,20 +132,17 @@ function createCard(){
     const valorInput2 = inputDescription.value
     const valorInputSelect = typeInformation.value.split(' , ')
 
-
     const newCard =`
      <div class="arealist">
      <div  id="${contador}"class="card" draggable="true">
      <div id="BorderCorOption" style="background:${valorInputSelect[1]}"> 
                  <div>
-                 <svg class ="editCard" onclick="editCard()" width="9" height="16" viewBox="0 0 2 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <svg class ="editCard" onclick="editCard()" width="7" height="12" viewBox="0 0 2 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="1" cy="1" r="1" fill="#D9D9D9"/>
                             <circle cx="1" cy="4" r="1" fill="#D9D9D9"/>
                             <circle cx="1" cy="7" r="1" fill="#D9D9D9"/>
                       </svg>
                 </div>
-              
-
                  <div id="treinarText">${valorInput}</div> 
                  <p>type:</p>
                  <div id="tarefas">${valorInputSelect[0]}</div>
@@ -123,21 +163,19 @@ function createCard(){
 
       closeForm() 
 
-         // localStorage basico para ler informacôes dos 
-     
-          cards = localStorage.setItem
+         // localStorage basico para ler informacôes dos cards
+              cards = localStorage.setItem
             ("cards", JSON.stringify([...JSON.parse(localStorage.getItem("cards") || "[]"),
 
             { Title: inputTitle.value, 
               Type: typeInformation.value, 
               Description: inputDescription.value,
               id: contador,
-              colum: card 
+              // Adicionar valor de coluna
             }]));
-
-          
                
       // drop Card : arrastar os cards para o doing e done
+   dragCard = newCard
 
   for(var index of card){
       index.addEventListener('dragstart', dragStart)
@@ -165,18 +203,37 @@ function createCard(){
   function dragOver(e){e.preventDefault()} 
   
   function dragEnter(e){e.preventDefault()  }
-  
+  doing.innerHTML = main.childElementCount
   function dragLeave(){  
-    
-
-body.onsubmit =(e) => {
-  e.preventDefault()
-  
-}
 
  } };
 
   // função deletar os cards
+
+  function deleteCard(id){
+      var cards = document.getElementById(id)
+      cards.remove()
+  }
+
+  function marcarTarefa(id){
+  var card = document.getElementById(id)
+  var classe = card.getAttribute('class')
+
+  console.log(classe)
+
+  if(classe == 'card'){
+    card.classList.add('clicado')
+    var icone = document.getElementById('icone_'+ id)
+    icone.classList.remove('mdi-circle-outline')
+    icone.classList.add('mdi-check-circle')
+  }
+  else{
+    card.classList.remove('clicado')
+    var icone = document.getElementById('icone_'+ id)
+    icone.classList.remove('mdi-check-circle')
+    icone.classList.add('mdi-circle-outline')
+  }
+ }  
 
   
 
