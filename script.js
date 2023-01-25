@@ -167,6 +167,12 @@ function createCard(){
   function dragEnter(e){e.preventDefault()  }
   
   function dragLeave(){  
+    
+
+body.onsubmit =(e) => {
+  e.preventDefault()
+  
+}
 
  } };
 
