@@ -15,6 +15,8 @@ const inputTitle = document.getElementById("inputTitle")
 const inputDescription = document.getElementById("inputDescription")
 const main = document.getElementById("areaCard")
 const typeInformation = document.getElementById("typeInformation")
+const containerDoing = document.getElementsByClassName("containerDoing")
+const containerDone = document.getElementsByClassName("containerDone")
 
 // drop card
 const dropzone = document.getElementsByClassName("dropzone")
@@ -64,8 +66,8 @@ function functionGetItems() {
           </div>        
       </div>`
      
-      
-    main.innerHTML += newCard;
+      main.innerHTML += newCard;
+
     closeForm()
   })
 }
@@ -73,9 +75,6 @@ function functionGetItems() {
 functionGetItems()
 
 // Mudar Number Doing
-
-
-
 
 body.onsubmit =(e) => {
   e.preventDefault()
@@ -171,8 +170,10 @@ function createCard(){
               Type: typeInformation.value, 
               Description: inputDescription.value,
               id: contador,
+              colum: card 
               // Adicionar valor de coluna
             }]));
+        
                
       // drop Card : arrastar os cards para o doing e done
    dragCard = newCard
@@ -203,37 +204,47 @@ function createCard(){
   function dragOver(e){e.preventDefault()} 
   
   function dragEnter(e){e.preventDefault()  }
-  doing.innerHTML = main.childElementCount
+  
   function dragLeave(){  
-
+if(card.colum === "doing"){
+    containerDoing.colum += newCard
+  }
  } };
 
-  // função deletar os cards
+//  drop para celular
+document.addEventListener("touchmove", () => {
 
-  function deleteCard(id){
-      var cards = document.getElementById(id)
-      cards.remove()
-  }
+  for(var index of card){
+    index.addEventListener('dragstart', dragStart)
+    index.addEventListener('dragend', dragEnd)
+}
 
-  function marcarTarefa(id){
-  var card = document.getElementById(id)
-  var classe = card.getAttribute('class')
+function dragStart(){
+  dragCard = this;
+  setTimeout(() => this.style.display = "none", 0)
+  
+}
+function dragEnd(){
+  setTimeout(() => this.style.display = "block", 0)
+  dragCard = null
+}
 
-  console.log(classe)
+for(DoingDone of dropzone){
+  DoingDone.addEventListener('dragover', dragOver)
+  DoingDone.addEventListener('dragenter', dragEnter)
+  DoingDone.addEventListener('dragleave', dragLeave)
+  DoingDone.addEventListener('drop', Drop)
+}
+function Drop(){ this.append(dragCard)  }
 
-  if(classe == 'card'){
-    card.classList.add('clicado')
-    var icone = document.getElementById('icone_'+ id)
-    icone.classList.remove('mdi-circle-outline')
-    icone.classList.add('mdi-check-circle')
-  }
-  else{
-    card.classList.remove('clicado')
-    var icone = document.getElementById('icone_'+ id)
-    icone.classList.remove('mdi-check-circle')
-    icone.classList.add('mdi-circle-outline')
-  }
- }  
+function dragOver(e){e.preventDefault()} 
+
+function dragEnter(e){e.preventDefault()  }
+
+function dragLeave(){  
+
+}
+});
 
   
 
