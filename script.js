@@ -246,7 +246,23 @@ function dragLeave(){
 }
 });
 
-  
-
-
- 
+document.addEventListener("touchstart", e => {
+ ;[...e.changedTouches].forEach(touch => {
+  const card = document.getElementsByClassName(touch.identifier)
+  card.style.top = `${touch.pageY}px`
+  card.style.left = `${touch.pageX}px`
+ })
+})
+document.addEventListener("touchmove" , e => {
+  ;[...e.changedTouches].forEach(touch => {
+    const card = document.getElementsByClassName(touch.identifier)
+    card.style.top = `${touch.pageY}px`
+    card.style.left = `${touch.pageX}px`
+  })
+})
+document.addEventListener("touchend", e => {
+  ;[...e.changedTouches].forEach(touch => {
+    const card = document.getElementsByClassName(touch.identifier)
+    card.remove()
+  })
+})
